@@ -48,7 +48,7 @@ Every test names the test case it implements and the requirement it verifies:
 def test_second_request_on_a_full_day_reminds_the_manager(client): ...
 ```
 
-After each cycle, `python scripts/trace.py` should show one fewer gap. A test without a marker is invisible to the traceability report.
+After each cycle, `.venv/bin/python scripts/trace.py` should show one fewer gap. A test without a marker is invisible to the traceability report.
 
 ## Mocking
 

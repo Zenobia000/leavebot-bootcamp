@@ -17,7 +17,7 @@
 - 不准刪除、跳過（skip）或放寬既有的測試來讓它通過。
 - 測試失敗時，修的是實作，不是測試。如果你認為測試本身錯了，**停下來說明理由**，由我決定。
 - 單元測試不准呼叫真的 LLM 或外部 API，一律用假物件（fake）。
-- `docs/06-test-plan.md` 的每個 TC 都要有對應的測試；`python scripts/trace.py` 不能有缺口。
+- `docs/06-test-plan.md` 的每個 TC 都要有對應的測試；`.venv/bin/python scripts/trace.py` 不能有缺口。
 
 ## 修 bug 的順序
 
@@ -30,4 +30,4 @@
 - [ ] 完整測試全綠，輸出已貼出
 - [ ] `git diff` 裡沒有修改到測試的斷言（assert）
 - [ ] 每個新行為都有測試，並標了 `req`
-- [ ] `python scripts/trace.py` 沒有新的缺口
+- [ ] `.venv/bin/python scripts/trace.py` 沒有新的缺口

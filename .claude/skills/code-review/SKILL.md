@@ -41,7 +41,7 @@ A documented repo standard overrides any of these. Consistency beats a rule from
 
 ## 3. Spec axis
 
-Read the originating ticket (`issues/NNN-*.md`) and the documents it points at (`docs/02-prd.md` … `docs/06-test-plan.md`). Run `python scripts/trace.py` and use its gaps. Check the diff against them:
+Read the originating ticket (`issues/NNN-*.md`) and the documents it points at (`docs/02-prd.md` … `docs/06-test-plan.md`). Run `.venv/bin/python scripts/trace.py` and use its gaps. Check the diff against them:
 
 - Every *Done when* condition, literally — met, or not
 - Every test case the ticket lists has a test marked `@pytest.mark.req` with that TC

@@ -3,6 +3,9 @@
 > **為誰做、做什麼、怎麼算做對了。** 上游：`01-brief.md`。範例：`examples/it-asset/02-prd.md`。
 >
 > ⚠️ 這份**不寫技術名詞**（框架、資料表、API）。寫得出 Given / When / Then 的才是驗收條件。
+>
+> **規模上限（2 天課）**：story ≤ 6、AC 總數 ≤ 15。彩排時 agent 自己長出 9 個 story、32 條 AC，
+> 往下會變成 37 條 FR、55 個測試案例 —— 人審不完。超過的放進 01 的 non-goal 或「待決事項」。
 
 | 項目 | 內容 |
 |---|---|
@@ -95,6 +98,7 @@ flowchart TD
 
 ## 通過檢核
 
+- [ ] story ≤ 6、AC ≤ 15
 - [ ] User flow 在 Mermaid 預覽裡畫得出來
 - [ ] 每個 epic 都標了對應的 G；每個 story 都標了 persona
 - [ ] 每個 story 至少 2 條 AC，至少一條是失敗路徑

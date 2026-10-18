@@ -1,7 +1,7 @@
 # 追溯規則：需求怎麼一路接到測試
 
 > 六份文件不是六份報告，是**一條鏈**。每一環都用編號指回上一環，最後由測試接住。
-> 鏈斷在哪裡，`python scripts/trace.py` 會告訴你。
+> 鏈斷在哪裡，`.venv/bin/python scripts/trace.py` 會告訴你。
 
 ## 編號
 
@@ -46,8 +46,8 @@ G ─▶ EP ─▶ US ─▶ AC ─┬─▶ FR / NFR ─▶ API / UI / 模組
 | 指向不存在的編號 | 測試標的編號文件裡沒有 | 改標註，或補文件 |
 
 ```bash
-python scripts/trace.py            # 看矩陣與缺口
-python scripts/trace.py --strict   # 有缺口就失敗（交付前跑）
+.venv/bin/python scripts/trace.py            # 看矩陣與缺口
+.venv/bin/python scripts/trace.py --strict   # 有缺口就失敗（交付前跑）
 ```
 
 ## 這句話該寫在哪份文件

@@ -29,12 +29,12 @@ Read first: `STACK.md` (the stack is fixed — you design **inside** it), `LEAVE
 - **Do not invent.** An open choice goes back to `/grilling` — it does not get a plausible default.
 - **Do not leave the stack.** A new dependency, framework or service is the user's decision, raised as a question, not written into an ADR.
 - **Every FR and NFR must land somewhere** in the SAD or SDS. Before finishing, list any that land nowhere and report them.
-- **Mermaid names** in `erDiagram` use only letters, digits and underscores.
+- **Mermaid names** in `erDiagram` use only letters, digits and underscores. Edge labels and node text containing `(`, `)`, `:` or `/` must be wrapped in double quotes (`-->|"build_llm()"|`) — unquoted, the whole diagram fails to render.
 - **Show both drafts before writing.** Let the user edit, then write the files.
 
 ## Finish
 
-Report the two paths, any FR / NFR that landed nowhere, and the next step: write `docs/06-test-plan.md`, then `python scripts/trace.py`.
+Report the two paths, any FR / NFR that landed nowhere, and the next step: write `docs/06-test-plan.md`, then `.venv/bin/python scripts/trace.py`.
 
 ## Rationalization table
 

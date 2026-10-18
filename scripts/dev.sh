@@ -13,6 +13,8 @@ cd "$(git rev-parse --show-toplevel)" || exit 1
 FRONTEND_PORT=${FRONTEND_PORT:-3000}
 BACKEND_PORT=${BACKEND_PORT:-8000}
 export BACKEND_URL="http://127.0.0.1:${BACKEND_PORT}"
+# 課程情境的「今天」（見 STACK.md）。要用真實日期就設成空字串：LEAVEBOT_TODAY= bash scripts/dev.sh
+export LEAVEBOT_TODAY=${LEAVEBOT_TODAY-2026-10-12}
 
 fail() { printf '✗ %s\n' "$1" >&2; exit 1; }
 
@@ -29,14 +31,18 @@ port_busy() {
 port_busy "$BACKEND_PORT" && fail "port $BACKEND_PORT 已被佔用。換一個：BACKEND_PORT=8100 bash scripts/dev.sh"
 port_busy "$FRONTEND_PORT" && fail "port $FRONTEND_PORT 已被佔用。換一個：FRONTEND_PORT=3100 bash scripts/dev.sh"
 
+# 兩邊各自開一個 process group（setsid），結束時整組一起關。
+# 只 kill 子程序本身不夠：npx 底下的 next-server 會被留下來，繼續佔著 port。
 pids=()
-cleanup() { for p in "${pids[@]}"; do kill "$p" 2>/dev/null; done; }
+cleanup() {
+  for p in "${pids[@]}"; do kill -- "-$p" 2>/dev/null || kill "$p" 2>/dev/null; done
+}
 trap cleanup EXIT INT TERM
 
 ROOT=$PWD
-(cd backend && exec "$ROOT/.venv/bin/uvicorn" app.main:app --reload --port "$BACKEND_PORT") &
+setsid bash -c 'cd backend && exec "$0" app.main:app --reload --port "$1"' "$ROOT/.venv/bin/uvicorn" "$BACKEND_PORT" &
 pids+=($!)
-(cd frontend && exec npx next dev -p "$FRONTEND_PORT") &
+setsid bash -c 'cd frontend && exec npx next dev -p "$0"' "$FRONTEND_PORT" &
 pids+=($!)
 
 printf '\n前端  http://localhost:%s\n後端  %s（API 文件：%s/docs）\nCtrl+C 結束\n\n' "$FRONTEND_PORT" "$BACKEND_URL" "$BACKEND_URL"

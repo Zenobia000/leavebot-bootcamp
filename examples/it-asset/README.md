@@ -15,5 +15,5 @@
 自己跑一次追溯檢查（範例沒有程式，所以每個 TC 都會顯示「還沒有測試」—— 那是 D2 要補的）：
 
 ```bash
-python scripts/trace.py --docs examples/it-asset
+.venv/bin/python scripts/trace.py --docs examples/it-asset
 ```

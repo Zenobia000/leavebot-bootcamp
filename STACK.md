@@ -58,6 +58,12 @@ backend/
 
 **4. 驗收 I0**：`bash scripts/dev.sh` 起得來，瀏覽器開前端，頁面經 proxy 讀到 `GET /api/health`。
 
+## 今天是幾號：固定成課程日期
+
+課程情境、eval 集與公司規章的「今天」都是 **2026-10-12（週一）**。後端任何用到「今天」的地方（送出期限、逾期、解析時傳給模型的日期），**一律從環境變數 `LEAVEBOT_TODAY` 讀**，沒設才用真實日期。`scripts/dev.sh` 預設會設成 `2026-10-12`。
+
+不這樣做的話：彩排時一張 10/23 的假單，過了 10/22 18:00 就被送出期限擋下，demo 走不通。測試也一樣，不准依賴真實時鐘。
+
 ## 唯一替你定好的 API：解析合約
 
 ```text
@@ -87,4 +93,4 @@ POST /api/parse
 def test_employee_sees_preview_after_submitting_a_sentence(client): ...
 ```
 
-`python scripts/trace.py` 會檢查需求 → 測試案例 → 測試的追溯有沒有斷掉。規則見 `templates/TRACEABILITY.md`。
+`.venv/bin/python scripts/trace.py` 會檢查需求 → 測試案例 → 測試的追溯有沒有斷掉。規則見 `templates/TRACEABILITY.md`。

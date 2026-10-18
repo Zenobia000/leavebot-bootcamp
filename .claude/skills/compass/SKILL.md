@@ -22,7 +22,7 @@ This repo ships six skills for a two-day course: D1 writes six spec documents, D
 | 6. How it will be verified: test cases, eval threshold | — fill the template with the agent | `docs/06-test-plan.md` |
 | 7. Split the build into iterations I0–I4 | **`/to-tickets`** | `issues/NNN-<slug>.md` |
 
-After each document, run `python scripts/trace.py`: it shows which requirements have no test case yet.
+After each document, run `.venv/bin/python scripts/trace.py`: it shows which requirements have no test case yet.
 
 ## D2 — from zero to a working app (right side of the V)
 
@@ -31,9 +31,9 @@ After each document, run `python scripts/trace.py`: it shows which requirements 
 | I0 skeleton: `backend/` + `frontend/` per `STACK.md` | — | `bash scripts/dev.sh` serves the frontend, which reads `/api/health` |
 | I1–I3 one ticket at a time | **`/tdd`** | the ticket's test cases go red, then green, each test marked `@pytest.mark.req(...)` |
 | Before merging an iteration | **`/code-review`** | a review a human accepts or rejects line by line |
-| I4 verify the AI itself | — | `python scripts/run_eval.py --min <threshold>` passes; injection test cases pass |
+| I4 verify the AI itself | — | `.venv/bin/python scripts/run_eval.py --min <threshold>` passes; injection test cases pass |
 
-Finish with `python scripts/trace.py --strict`.
+Finish with `.venv/bin/python scripts/trace.py --strict`.
 
 `/compass`, `/to-architecture` and `/to-tickets` are **user-triggered**: the user types them, and they are deliberately absent from your own list of skills. Do not warn that they are missing — check `.claude/skills/<name>/SKILL.md` if in doubt.
 

@@ -22,12 +22,13 @@
 ## 怎麼跑
 
 ```bash
-pip install -e ".[dev]"            # repo 根目錄，一次就好
-pytest                             # 全部測試：kit、工具、backend/tests
-bash scripts/dev.sh                # 同時起 backend 與 frontend
-python scripts/trace.py            # 需求 → 測試案例 → 測試，哪裡斷了
-python scripts/run_eval.py         # 用 eval 集打 POST /api/parse，算準確率
+.venv/bin/pytest                          # 全部測試：kit、工具、backend/tests
+bash scripts/dev.sh                       # 同時起 backend 與 frontend
+.venv/bin/python scripts/trace.py         # 需求 → 測試案例 → 測試，哪裡斷了
+.venv/bin/python scripts/run_eval.py      # 用 eval 集打 POST /api/parse，算準確率
 ```
+
+**一律用 `.venv/bin/python`、`.venv/bin/pytest`**（Windows：`.venv\Scripts\python`）。agent 的 shell 不會自動啟用 venv，很多機器上也沒有 `python` 這個指令，只有 `python3`。
 
 說「完成」之前，必須跑過 `pytest` 並貼出結果；有改到需求或測試時，也貼 `trace.py` 的缺口。
 

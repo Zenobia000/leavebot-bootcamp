@@ -3,6 +3,8 @@
 > **V 的右邊，在寫程式之前先寫好。** 每條需求要怎麼驗、驗到什麼程度算完。
 > 上游：`02-prd.md`（AC）、`03-srs.md`（FR / NFR）、`05-sds.md`。範例：`examples/it-asset/06-test-plan.md`。
 > D2 寫測試時，每個測試都用 `@pytest.mark.req("TC-xx", …)` 指回這裡。
+>
+> **規模上限（2 天課）**：TC ≤ 30。AI 窮舉 50 個情境之後，**人篩選**才是這份文件的價值 —— 留下的越多，代表篩得越少。
 
 | 項目 | 內容 |
 |---|---|
@@ -45,7 +47,7 @@
 | 項目 | 內容 |
 |---|---|
 | eval 集 | `fixtures/leave-sentences.jsonl`（＜起始集 30 句＋你們加的 N 句＞） |
-| 指令 | `python scripts/run_eval.py --min ＜門檻＞` |
+| 指令 | `.venv/bin/python scripts/run_eval.py --min ＜門檻＞` |
 | 上線門檻 | ＜例：0.85＞ |
 | 為什麼是這個數字 | ＜錯一句的代價是什麼？誰會發現？＞ |
 
@@ -69,7 +71,7 @@
 
 > 💡 什麼狀態才算這一版做完。要可以檢查。
 
-- [ ] `python scripts/trace.py --strict` 通過
+- [ ] `.venv/bin/python scripts/trace.py --strict` 通過
 - [ ] `pytest` 全綠
 - [ ] `run_eval.py` 準確率 ≥ ＜門檻＞
 - [ ] ＜＞
@@ -81,4 +83,4 @@
 - [ ] PRD 的每條 AC 都有至少一個 TC；沒有的放進「不測什麼」並寫理由
 - [ ] 每個 TC 都寫了層級與預期結果
 - [ ] 上線門檻有數字，也寫了為什麼
-- [ ] `python scripts/trace.py` 沒有「沒有 TC」的缺口
+- [ ] `.venv/bin/python scripts/trace.py` 沒有「沒有 TC」的缺口

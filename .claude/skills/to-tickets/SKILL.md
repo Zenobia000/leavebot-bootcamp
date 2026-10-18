@@ -50,4 +50,4 @@ Traps, decided-against alternatives, the seam to test at.
 
 ## Finish
 
-Report the paths and say: build each ticket with `/tdd`, **`/clear`ing context between tickets**, and run `python scripts/trace.py` after each one.
+Report the paths and say: build each ticket with `/tdd`, **`/clear`ing context between tickets**, and run `.venv/bin/python scripts/trace.py` after each one.

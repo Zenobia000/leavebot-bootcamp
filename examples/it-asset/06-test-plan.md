@@ -70,6 +70,6 @@
 
 ## 5. 退出條件
 
-- [ ] `python scripts/trace.py --docs docs --strict` 通過
+- [ ] `.venv/bin/python scripts/trace.py --docs docs --strict` 通過
 - [ ] `pytest` 全綠
 - [ ] demo 走完 PRD 的 user flow：申請 → 核發 → 歸還

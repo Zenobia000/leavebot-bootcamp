@@ -87,6 +87,8 @@ erDiagram
 | ＜例：parsing＞ | ＜呼叫 LLM、驗證輸出格式＞ | ＜`parse(sentence: str, today: date) -> ParseResult`＞ | ＜FR-01＞ |
 | ＜例：rules＞ | ＜剩餘額度、撞期＞ | ＜＞ | ＜FR-03＞ |
 
+**今天是幾號**：＜例：`clock.today()` 讀 `LEAVEBOT_TODAY`（見 `STACK.md`），測試注入固定日期＞
+
 **給 LLM 的 prompt 放哪裡、輸出怎麼驗證**：＜例：prompt 放 `backend/app/prompts.py`；輸出用 pydantic model 驗證，失敗回 422＞
 
 ---

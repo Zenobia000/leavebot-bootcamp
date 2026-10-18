@@ -27,6 +27,8 @@ packages = ["kit"]
 # backend/tests 是你在 D2 寫的測試；還沒建立時 pytest 會略過它
 testpaths = ["kit/tests", "scripts/tests", "backend/tests"]
 pythonpath = ["backend", "."]
+# 測試資料夾不用放 __init__.py；不同層級有同名測試檔也不會撞名
+addopts = "--import-mode=importlib"
 markers = [
     "req(*ids): 這個測試實作哪個測試案例（TC-xx）、驗哪條需求（AC / FR / NFR）。scripts/trace.py 會讀它",
 ]
