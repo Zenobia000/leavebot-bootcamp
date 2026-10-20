@@ -19,7 +19,7 @@ leavebot-bootcamp/
 2. **裝工具**：Python 3.12、Node 24、Claude Code 或 Codex。細節照講義的「課前準備」。
 3. **申請 Anthropic API key**，確認帳戶有額度。D2 你們的 app 要用它呼叫模型。
 4. **讀題目**：[`course/LEAVEBOT.md`](./course/LEAVEBOT.md)。
-5. **確認接上了**：在 repo 根目錄打開 `claude` 或 `codex`，打 `/compass`（Codex：`$compass`），看得到技能表就完成。第一次開會問要不要啟用專案的 MCP，選同意。
+5. **確認接上了**：在 repo 根目錄打開 `claude` 或 `codex`，打 `/compass`（Codex：`$compass`），看得到技能表就完成。第一次開 Claude Code 會問要不要啟用專案的 MCP，選同意；第一次開 Codex 會問要不要信任這個資料夾，選信任 —— 不信任的話 Codex 讀不到專案的 MCP。
 
 **一律在 repo 根目錄啟動 agent**。在子目錄啟動，護欄不會生效。
 

@@ -1,5 +1,6 @@
 # Codex 的專案層 MCP 設定，與 .mcp.json（Claude Code）同兩個伺服器。
-# Codex 只在「信任的專案」載入這份檔；第一次在這個 repo 開 Codex 時選信任。
+# Codex 只在「信任的專案」載入這份檔：信任紀錄寫在使用者的 ~/.codex/config.toml，路徑要是實際路徑（symlink 不算）。
+# 第一次在這個 repo 開 Codex 時選信任即可。2026-10-20 以 codex-cli 0.162.1 實測可用。
 # 兩邊要同步改，.maintain/check-mcp.sh 會擋不同步。
 
 [mcp_servers.context7]

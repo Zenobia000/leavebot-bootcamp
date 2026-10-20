@@ -60,7 +60,7 @@ leavebot-bootcamp/                     ← 一律在這裡（repo 根目錄）�
 | **context7** | 查套件的最新官方文件 | Next.js 16、Anthropic SDK 的寫法和 agent 記得的不一樣時，查了再寫，少一半幻覺 |
 | **playwright** | 開一個看不見的瀏覽器，點畫面、讀頁面 | D2 每個疊代結束，請 agent 照 PRD 的 user flow 自己點一遍前端 |
 
-第一次在這個 repo 啟動 Claude Code，它會問要不要啟用專案的 MCP，選同意。之後用 `/mcp` 看連線狀態。
+第一次在這個 repo 啟動 Claude Code，它會問要不要啟用專案的 MCP，選同意。Codex 則是問要不要信任這個資料夾，選信任（見最後的「已知落差」）。之後用 `/mcp` 看連線狀態。
 
 > ⚠️ **安全**：MCP 給的是能力，能力越大，被注入攻擊時能做的事越多。這兩個都在你自己的電腦上跑、不碰你的帳號。**不要**隨便加來路不明的 MCP，加之前先看它能做什麼。
 
@@ -107,7 +107,8 @@ leavebot-bootcamp/                     ← 一律在這裡（repo 根目錄）�
 ## 已知落差
 
 - ⚠️ Codex 的 guard：`.codex/hooks.json` 已登記，但以 `codex exec` 實測時 guard 沒有觸發，擋下 `git add -A` 的是 Codex 自己的 sandbox（它讓 `.git` 唯讀）。互動模式未驗證。
-- ⚠️ Codex 的 MCP：`.codex/config.toml` 已寫好同兩個 MCP，但 Codex 只在**信任的專案**載入專案層設定，第一次開啟時要選信任。以 `codex exec` 實測時沒有載入成功，互動模式未驗證。Claude Code 的兩個 MCP 都實測可用。
+- Codex 的 MCP 要先**信任這個專案**才會載入：第一次在 repo 根目錄開 `codex`，它問要不要信任這個資料夾，選信任。它會在你的 `~/.codex/config.toml` 寫下一行 `[projects."<這個 repo 的實際路徑>"] trust_level = "trusted"`。沒選到的話，自己補上這兩行（路徑要用實際路徑，symlink 的路徑不算）。用 `codex mcp list` 看得到 context7 和 playwright 就對了。
+  （2026-10-20 以 codex-cli 0.162.1 實測：信任後兩個都能呼叫；playwright 每次動作會問你准不准，互動模式按允許即可。）
 - Antigravity、Copilot 不認「只准使用者觸發」，`/compass`、`/to-architecture`、`/to-tickets` 可能被 agent 自己啟動。這門課只支援 Claude Code 與 Codex。
 
 ## 單元 1 的通過訊號
