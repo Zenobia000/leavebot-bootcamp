@@ -60,7 +60,7 @@ A test without a marker cannot be traced back to a requirement.
 
 Default to **not** mocking. A test with four mocks is testing the mocks.
 
-Mock only what you do not own and cannot make fast or deterministic: third-party network calls, the clock, randomness, the filesystem when it is genuinely slow. In this repo the LLM sits behind a seam you build: business code depends on a `complete(system, user) -> str` interface, and tests inject a fake implementation — never the real model (`course/STACK.md`). Your own modules are not on that list — if they are hard to use in a test, that is a design finding, not a mocking problem.
+Mock only what you do not own and cannot make fast or deterministic: third-party network calls, the clock, randomness, the filesystem when it is genuinely slow. In this repo the clock and the database are seams by design: "today" comes from `LEAVEBOT_TODAY` and the database path from `LEAVEBOT_DB`, so tests set both (`course/STACK.md`). If the project takes on challenge C4, the LLM sits behind a seam too: business code depends on a `complete(system, user) -> str` interface, and tests inject a fake implementation — never the real model. Your own modules are not on that list — if they are hard to use in a test, that is a design finding, not a mocking problem.
 
 In-memory fakes beat mocks. A fake repository backed by a map exercises real logic; a mocked one asserts you called a method.
 

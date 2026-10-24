@@ -5,7 +5,8 @@ __pycache__/
 *.egg-info/
 .pytest_cache/
 backend/data/
-frontend/node_modules/
-frontend/.next/
 .playwright-mcp/
-dev.log
+
+# D1 練習區與 Archify 的暫存資料夾
+playground/
+.archify/

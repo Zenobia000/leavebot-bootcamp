@@ -1,6 +1,6 @@
 # Eval 起始集：`leave-sentences.jsonl`
 
-30 句請假句子與人工標註的預期假單。D2 的 I4 由你們的 agent 生成 eval 腳本，逐句打你們的 `POST /api/parse`，照 Test Plan 模板的比對規則量 AI 解析的準確率。
+**進階挑戰 C4 用。** 30 句請假句子與人工標註的預期假單。由你們的 agent 生成 eval 腳本，逐句打你們的 `POST /api/parse`，照 Test Plan 模板的比對規則量 AI 解析的準確率。
 **這是起始集**，請加上你們公司真的會出現的說法。
 
 ## 格式

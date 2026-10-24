@@ -29,13 +29,13 @@ G ─▶ EP ─▶ US ─▶ AC ─┬─▶ FR / NFR ─▶ API / UI / 模組
 ## V-model
 
 ```text
- 01 Brief / 02 PRD  ─────────────────▶  驗收測試     tests/acceptance/
-      03 SRS  ─────────────────────▶  系統測試＋eval tests/system/、I4 的 eval 腳本
-          04 SAD  ─────────────────▶  整合測試     tests/integration/
-              05 SDS  ─────────────▶  單元測試     tests/unit/
-                    ╲             ╱
-                     06 Test Plan（先寫好右邊要驗什麼）
+ 01 Brief / 02 PRD / 03 SRS  ──────────▶  驗收測試   backend/tests/acceptance/
+          04 SAD / 05 SDS  ────────────▶  單元測試   backend/tests/unit/
+                       ╲               ╱
+                        06 Test Plan（先寫好右邊要驗什麼）
 ```
+
+基本範圍用兩層就夠。做進階挑戰時可以再拆出系統測試、整合測試，C4 再加 eval。
 
 ## 三種斷鏈，怎麼抓
 

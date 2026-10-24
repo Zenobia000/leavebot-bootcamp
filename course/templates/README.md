@@ -3,20 +3,20 @@
 > 上課時用，回公司也能直接帶走。每一份都是**填空題**：`＜＞` 是要換掉的地方，`💡` 是提示。
 > 寫好的範例在 [`../examples/it-asset/`](../examples/it-asset/)（另一個題目：IT 設備借用），看「寫完長什麼樣」用，**不要照抄** —— 你的題目和它不一樣。
 
-## 六份規格文件（D1）
+## 六份規格文件（D2）
 
 複製到根目錄的 `docs/`，檔名照抄（`docs/01-brief.md` …）。技能和專案大腦都靠這個位置找它們。
 
 | 檔案 | 回答 | 單元 |
 |---|---|---|
-| [`01-brief.md`](./01-brief.md) | 為什麼做：痛點、goal、non-goal | D1-2 |
-| [`02-prd.md`](./02-prd.md) | 為誰做、做什麼：persona、user flow、epic、story、BDD 驗收條件 | D1-3 |
-| [`03-srs.md`](./03-srs.md) | 什麼叫做好了：use case、FR、NFR | D1-4 |
-| [`04-sad.md`](./04-sad.md) | 怎麼組起來：C4、資訊流、誰負責什麼、技術選型 | D1-5 |
-| [`05-sds.md`](./05-sds.md) | 每一塊怎麼做：ER、API、畫面、模組 | D1-6 |
-| [`06-test-plan.md`](./06-test-plan.md) | 怎麼驗：V-model 對應、測試案例、AI 驗收、退出條件 | D1-7 |
+| [`01-brief.md`](./01-brief.md) | 為什麼做：痛點、goal、non-goal、完成標準 | D2 單元 8 |
+| [`02-prd.md`](./02-prd.md) | 為誰做、做什麼：persona、user flow、epic、story、BDD 驗收條件 | D2 單元 9（D1 單元 7 先在 `playground/` 練一次） |
+| [`03-srs.md`](./03-srs.md) | 什麼叫做好了：use case、FR、NFR | D2 單元 10 |
+| [`04-sad.md`](./04-sad.md) | 怎麼組起來：C4、資訊流、誰負責什麼、技術選型 | D2 單元 10 |
+| [`05-sds.md`](./05-sds.md) | 每一塊怎麼做：ER、API、畫面、模組 | D2 單元 10 |
+| [`06-test-plan.md`](./06-test-plan.md) | 怎麼驗：V-model 對應、測試案例、退出條件、追溯矩陣 | D2 單元 11 |
 | [`TRACEABILITY.md`](./TRACEABILITY.md) | 編號規則、需求怎麼一路接到測試、這句話該寫在哪份文件 | 隨時查 |
-| [`LESSONS.md`](./LESSONS.md) | 經驗紀錄：AI 誤解了什麼、產出和講義不一樣時怎麼對齊 | D1-8 建立，之後一直更新 |
+| [`LESSONS.md`](./LESSONS.md) | 經驗紀錄：AI 誤解了什麼、產出和講義不一樣時怎麼對齊 | D2 單元 11 建立，之後一直更新 |
 
 讓 AI 照格式寫：
 
@@ -26,7 +26,7 @@
 沒討論到的，放進「待決事項」，不要替我決定。
 ```
 
-## 專案大腦與紅線（D1-8、D2）
+## 專案大腦與紅線（D2 單元 11 起）
 
 | 檔案 | 什麼時候用 |
 |---|---|

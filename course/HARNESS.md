@@ -1,6 +1,6 @@
 # HARNESS —— agent 的設定檔各管什麼
 
-> D1 第一個單元用這個 repo 當解剖標本。Claude Code 和 Codex 不是只有「對話框」：
+> D1 單元 4、5 用這個 repo 當解剖標本。Claude Code 和 Codex 不是只有「對話框」：
 > 它們每次啟動都會讀一組檔案，決定**要守什麼規則、會什麼技能、哪些動作做不到、能連到哪些外部工具**。
 > 後面你要改規則、被 guard 擋下來、讓 agent 開瀏覽器，都要先知道是哪個檔案在作用。
 
@@ -11,7 +11,7 @@ leavebot-bootcamp/                     ← 一律在這裡（repo 根目錄）�
 ├── AGENTS.md                          ← ① 規則（專案大腦）。Codex 讀這份
 ├── CLAUDE.md                          ← 只有一行 @AGENTS.md。Claude Code 讀這份，再被導到 AGENTS.md
 ├── .claude/
-│   ├── skills/<名字>/SKILL.md         ← ② 技能。Claude Code 打 /名字
+│   ├── skills/<名字>/SKILL.md         ← ② 技能。Claude Code 打 /名字（含畫圖用的 archify）
 │   │   └── agents/openai.yaml         ←    給 Codex 的「只准使用者觸發」設定
 │   ├── hooks/guard-git.sh             ← ③ hook：擋危險的 git 指令
 │   ├── hooks/guard-secrets.sh         ←    擋把疑似金鑰 commit 進去
@@ -22,6 +22,7 @@ leavebot-bootcamp/                     ← 一律在這裡（repo 根目錄）�
 │   ├── hooks.json                     ←    Codex 登記同一對 guard
 │   └── config.toml                    ←    Codex 的 MCP 設定（同兩個工具）
 ├── course/                            ← 課程給的規格與素材，不是設定
+├── playground/                        ← D1 練習區，不進版控（第一次用時才會出現）
 └── .maintain/                         ← 維護這個 repo 用的檢查，學員不用管
 ```
 
@@ -36,18 +37,19 @@ leavebot-bootcamp/                     ← 一律在這裡（repo 根目錄）�
 
 判斷口訣：**違反了會有人受傷的，降成 hook；其他寫成規則。缺的是能力，接 MCP。**
 
-## 10 個技能
+## 11 個技能
 
 | Claude Code | Codex | 做什麼 | 什麼時候 |
 |---|---|---|---|
 | `/compass` | `$compass` | 不知道下一步用哪個技能時問它 | 隨時 |
-| `/grilling` | `$grilling` | 讓 AI 拷問你，產出 Brief 與 PRD | D1 |
-| `/to-architecture` | `$to-architecture` | 產出 SAD 與 SDS | D1 |
-| `/writing-for-agents` | `$writing-for-agents` | 寫專案大腦 `AGENTS.md` 的「本專案」段 | D1 |
-| `/to-tickets` | `$to-tickets` | 切成 I0–I4 疊代票，寫進 `issues/` | D1 |
-| `/tdd` | `$tdd` | 從票上的測試案例開始，先紅燈再綠燈；收尾更新追溯矩陣與經驗紀錄 | D2 |
-| `/diagnosing-bugs` | `$diagnosing-bugs` | 紅燈修不好時：重現、縮小、一次驗一個假說 | D2 |
-| `/code-review` | `$code-review` | 審查改動是否守規範、是否做到票要求的事 | D2 |
+| `/grilling` | `$grilling` | 讓 AI 拷問你，問出規章沒寫的洞，再產出 PRD | D1 練習、D2 單元 9 |
+| `/archify` | `$archify` | 把流程、架構、ERD 畫成可以互動的 HTML 圖。**只畫圖，不寫文件**；需要 Node 18 以上 | D1 單元 7、D2 單元 10 |
+| `/to-architecture` | `$to-architecture` | 產出 SAD 與 SDS | D2 單元 10 |
+| `/writing-for-agents` | `$writing-for-agents` | 寫專案大腦 `AGENTS.md` 的「本專案」段 | D2 單元 11 |
+| `/to-tickets` | `$to-tickets` | 切成骨架票與新增請假票，寫進 `issues/` | D2 單元 11 |
+| `/tdd` | `$tdd` | 從票上的測試案例開始，先紅燈再綠燈；收尾更新追溯矩陣與經驗紀錄 | D2 單元 12 |
+| `/diagnosing-bugs` | `$diagnosing-bugs` | 紅燈修不好時：重現、縮小、一次驗一個假說 | D2 單元 13 |
+| `/code-review` | `$code-review` | 審查改動是否守規範、是否做到票要求的事 | D2 單元 14 |
 | `/handoff` | `$handoff` | 換組員或換工具接手前，把狀態寫成一份交接檔 | D2 |
 | `/writing-hooks` | `$writing-hooks` | 一條規則被違反了會有人受傷，就把它寫成 hook | 隨時 |
 
@@ -57,8 +59,8 @@ leavebot-bootcamp/                     ← 一律在這裡（repo 根目錄）�
 
 | MCP | 給 agent 什麼能力 | 這門課用在哪 |
 |---|---|---|
-| **context7** | 查套件的最新官方文件 | Next.js 16、Anthropic SDK 的寫法和 agent 記得的不一樣時，查了再寫，少一半幻覺 |
-| **playwright** | 開一個看不見的瀏覽器，點畫面、讀頁面 | D2 每個疊代結束，請 agent 照 PRD 的 user flow 自己點一遍前端 |
+| **context7** | 查套件的最新官方文件 | FastAPI 的寫法和 agent 記得的不一樣時，查了再寫，少一半幻覺 |
+| **playwright** | 開一個看不見的瀏覽器，點畫面、讀頁面 | D2 切片做完，請 agent 照 PRD 的 user flow 自己點一遍畫面 |
 
 第一次在這個 repo 啟動 Claude Code，它會問要不要啟用專案的 MCP，選同意。之後用 `/mcp` 看連線狀態。
 
@@ -87,7 +89,7 @@ leavebot-bootcamp/                     ← 一律在這裡（repo 根目錄）�
 
 ## 三個新手最常踩的坑
 
-1. **在子目錄啟動。** 實測：在 `frontend/` 或 `backend/` 裡啟動 Claude Code，技能讀得到，但**專案根目錄的 hooks 不會生效**。一律在 repo 根目錄啟動。
+1. **在子目錄啟動。** 實測：在 `backend/` 這類子目錄裡啟動 Claude Code，技能讀得到，但**專案根目錄的 hooks 不會生效**。一律在 repo 根目錄啟動。
 2. **跑 `/init` 蓋掉專案大腦。** 這個 repo 已經有 `CLAUDE.md` 和 `AGENTS.md` 了。要讓 agent 讀懂專案，請它讀 `AGENTS.md` 和 `docs/`，不要 `/init`。
 3. **把規則寫在對話裡。** 對話會被 `/clear`、`/compact` 清掉，檔案不會。規則寫進 `AGENTS.md`，經驗寫進 `docs/LESSONS.md`，規格寫進 `docs/`。
 
@@ -110,8 +112,8 @@ leavebot-bootcamp/                     ← 一律在這裡（repo 根目錄）�
 - ⚠️ Codex 的 MCP：`.codex/config.toml` 已寫好同兩個 MCP，但 Codex 只在**信任的專案**載入專案層設定，第一次開啟時要選信任。以 `codex exec` 實測時沒有載入成功，互動模式未驗證。Claude Code 的兩個 MCP 都實測可用。
 - Antigravity、Copilot 不認「只准使用者觸發」，`/compass`、`/to-architecture`、`/to-tickets` 可能被 agent 自己啟動。這門課只支援 Claude Code 與 Codex。
 
-## 單元 1 的通過訊號
+## D1 單元 5 的通過訊號
 
 - [ ] 請 agent 跑 `git add -A`，它被擋下。你說得出是**哪個檔案**擋的、在哪裡登記的
 - [ ] 你說得出 `AGENTS.md` 和 `.claude/hooks/` 的差別：哪一個 agent 可以違反、哪一個不行
-- [ ] 請 agent 用 playwright 打開任一網頁、回報標題；用 context7 查 Next.js 的文件。兩個都回得出來
+- [ ] 請 agent 用 playwright 打開任一網頁、回報標題；用 context7 查 FastAPI 的文件。兩個都回得出來

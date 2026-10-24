@@ -5,7 +5,7 @@
 commit `1434be8ff814b51f0e7fa166bc2e767075e71d83`（2026-08-12），依 MIT License 使用。
 
 本專案已對其做出修改：只保留上課用的 10 個技能；`ask-luca` 更名為 `compass` 並改寫成只在這 10 個之間導航；
-`to-architecture`、`to-tickets`、`tdd`、`code-review` 改寫成本課程的檔案慣例（`docs/0N-*.md`、I0–I4 疊代票、`@pytest.mark.req`、追溯矩陣、`docs/LESSONS.md`）；`diagnosing-bugs`、`handoff`、`writing-hooks` 改掉指向本 repo 沒有的技能或腳本的引用；
+`to-architecture`、`to-tickets`、`tdd`、`code-review` 改寫成本課程的檔案慣例（`docs/0N-*.md`、`issues/` 票、`@pytest.mark.req`、追溯矩陣、`docs/LESSONS.md`）；`diagnosing-bugs`、`handoff`、`writing-hooks` 改掉指向本 repo 沒有的技能或腳本的引用；
 guard hooks 的回歸規格從 `setup-skills/hooks/` 移到 `.claude/hooks/`。
 本 repo 的技能精簡自 [agent-skills-starter](https://github.com/Zenobia000/agent-skills-starter)，那裡有完整修改清單（`.claude/skills/README.md`）。
 
@@ -65,6 +65,37 @@ luca-skills 中部分技能文字改寫自 [mattpocock/skills](https://github.co
     CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
     TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
     SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+---
+
+## archify
+
+`.claude/skills/archify/` 取自 [tt-a1i/archify](https://github.com/tt-a1i/archify) 3.2.0，依 MIT License 使用。
+本專案唯一的修改是刪掉 `examples/` 底下預先渲染好的 `*-rendered.html`（約 13 MB），JSON 範例與執行期檔案都保留。
+它自己的第三方聲明在 `.claude/skills/archify/THIRD_PARTY_NOTICES.md`。
+
+    MIT License
+
+    Copyright (c) 2026 tt-a1i (Archify)
+    Copyright (c) 2025 Cocoon AI
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
 
 ---
 
