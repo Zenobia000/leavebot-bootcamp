@@ -11,6 +11,6 @@
 | TC-08 | AC-01.2 FR-02 | 非法員工／假別／時段 | 拒絕且不存檔 |
 | TC-09 | NFR-01 | 理由有HTML字串 | 當文字顯示 |
 退出：pytest綠；瀏覽器成功、拒絕、刷新與換員工有證據。不跑LLM eval。
-追溯：TC01/02/03/05/06/07/08 → backend/tests/acceptance/test_leaves.py；TC04 → backend/tests/unit/test_rules.py。上述已執行綠；TC09瀏覽器純文字驗收待操作，不標通過。
+追溯：TC01/02/03/05/06/07/08 → backend/tests/acceptance/test_leaves.py；TC04 → backend/tests/unit/test_rules.py。上述已執行綠；TC09已用Playwright實際操作，理由HTML當純文字呈現，見docs/evidence/browser-check.json。
 
-TC-10：101字拒絕且不存檔；backend/tests/acceptance/test_leaves.py，實際紅→綠。TC09與完整瀏覽器流程需見DELIVERY的後續操作證據。
+TC-10：101字拒絕且不存檔；backend/tests/acceptance/test_leaves.py，實際紅→綠。TC09與核心瀏覽器流程見DELIVERY及docs/evidence/browser-check.json。
