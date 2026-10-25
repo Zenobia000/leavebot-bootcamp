@@ -48,3 +48,8 @@ def test_data_persists_across_app_restart(tmp_path):
 def test_invalid_values_do_not_save(client,changes):
     assert client.post('/api/leaves',json=valid(**changes)).status_code==422
     assert count(client)==0
+
+@pytest.mark.req('TC-10','AC-01.4','FR-04')
+def test_new_reason_limit_100(client):
+    assert client.post('/api/leaves',json=valid(reason='字'*101)).status_code==422
+    assert count(client)==0
