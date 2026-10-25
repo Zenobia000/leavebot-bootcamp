@@ -1,0 +1,101 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "請假表單：送出、驗證與結果",
+    "locale": "zh-TW",
+    "quality_profile": "showcase",
+    "output": "diagrams/submit-leave.html"
+  },
+  "lanes": [
+    {
+      "id": "employee",
+      "label": "員工操作"
+    },
+    {
+      "id": "server",
+      "label": "後端與儲存"
+    },
+    {
+      "id": "error",
+      "label": "錯誤回饋",
+      "variant": "exception"
+    }
+  ],
+  "mainPath": [
+    "select",
+    "form",
+    "validate",
+    "save",
+    "list"
+  ],
+  "nodes": [
+    {
+      "id": "select",
+      "lane": "employee",
+      "col": 0,
+      "type": "external",
+      "label": "選員工"
+    },
+    {
+      "id": "form",
+      "lane": "employee",
+      "col": 1,
+      "type": "frontend",
+      "label": "填表送出"
+    },
+    {
+      "id": "validate",
+      "lane": "server",
+      "col": 2,
+      "type": "security",
+      "label": "驗證欄位與日期"
+    },
+    {
+      "id": "save",
+      "lane": "server",
+      "col": 3,
+      "type": "database",
+      "label": "存成待審核"
+    },
+    {
+      "id": "list",
+      "lane": "employee",
+      "col": 4,
+      "type": "frontend",
+      "label": "我的假單"
+    },
+    {
+      "id": "reject",
+      "lane": "error",
+      "col": 3,
+      "type": "security",
+      "label": "錯誤且不存檔"
+    }
+  ],
+  "edges": [
+    {
+      "from": "select",
+      "to": "form"
+    },
+    {
+      "from": "form",
+      "to": "validate"
+    },
+    {
+      "from": "validate",
+      "to": "save",
+      "label": "有效"
+    },
+    {
+      "from": "save",
+      "to": "list"
+    },
+    {
+      "from": "validate",
+      "to": "reject",
+      "label": "無效",
+      "variant": "security"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "3d8f152f-8987-4f24-84c9-f958bee14ad4",
+  "status": "current",
+  "command": "deliver",
+  "type": "workflow",
+  "input": "D:\\python_workspace\\github\\ai-vibe-coding-beginner\\tmp\\leavebot-rehearsal\\diagrams\\submit-leave.workflow.json",
+  "output": "D:\\python_workspace\\github\\ai-vibe-coding-beginner\\tmp\\leavebot-rehearsal\\diagrams\\submit-leave.html",
+  "specification": {
+    "sha256": "d914cc4804897b1ed3fe9b5674ebd7b1c765ef8415aac489363e839c998c1705",
+    "bytes": 1864
+  },
+  "artifact": {
+    "sha256": "f36b6ad2238dcfe54b46ccfb95d71665eceea06066c867f4ff6c386f7bb9116c",
+    "bytes": 812122
+  }
+}
