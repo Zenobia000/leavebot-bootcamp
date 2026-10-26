@@ -1,6 +1,6 @@
 # 06 Test Plan — LeaveBot（講師參考）
 
-> 案例的預期值依 `docs/02-prd.md`、`docs/03-srs.md` 與講師教學決策，不從實作函式反推。此快照只有骨架 health 測試綠燈；TC-01 已寫成預期紅燈，其餘業務案例尚未實作。
+> 案例的預期值依 `docs/02-prd.md`、`docs/03-srs.md` 與講師教學決策，不從實作函式反推。本快照已完成 TC-01 至 TC-08 的自動化驗證；TC-09 仍待瀏覽器或人工操作。
 
 文件狀態：講師參考已確認；測試設計負責人／審查者：課程講師；執行狀態以各 checkpoint 的證據為準。
 
@@ -49,7 +49,7 @@ Windows 使用 `.venv\Scripts\python.exe -m pytest`；macOS/Linux 使用 `.venv/
 
 ## 退出條件
 
-- [ ] 相關自動化測試實際執行且通過，附上結果
+- [x] 相關自動化測試實際執行且通過：20 passed（2026-10-27，Windows Python 3.12.9）
 - [ ] 成功、拒絕、重新整理與換員工流程經人工或瀏覽器操作核對
 - [x] 每條 AC／FR／NFR 已安排 TC；尚未執行者不標通過
 
@@ -57,16 +57,15 @@ Windows 使用 `.venv\Scripts\python.exe -m pytest`；macOS/Linux 使用 `.venv/
 
 | 需求 | TC | 測試檔／人工證據 | 狀態 |
 |---|---|---|---|
-| AC-01.1、FR-01 | TC-01 | `backend/tests/acceptance/test_leaves.py` | 預期紅燈：POST 尚未實作，回 405 |
-| AC-01.2、FR-02 | TC-02、TC-03、TC-08 | 待建立 | 未執行 |
-| AC-01.3、FR-03 | TC-04 | 待建立 | 未執行 |
-| AC-01.4、FR-04 | TC-05 | 待建立 | 未執行 |
-| AC-01.5、FR-05 | TC-06 | 待建立 | 未執行 |
-| AC-02.1、FR-06 | TC-07 | 待建立 | 未執行 |
+| AC-01.1、FR-01 | TC-01 | `backend/tests/acceptance/test_leaves.py` | 通過 |
+| AC-01.2、FR-02 | TC-02、TC-03、TC-08 | `backend/tests/acceptance/test_leaves.py` | 通過 |
+| AC-01.3、FR-03 | TC-04 | `backend/tests/unit/test_rules.py` | 通過 |
+| AC-01.4、FR-04 | TC-05 | `backend/tests/acceptance/test_leaves.py` 測 200 可用、201 拒絕 | 通過 |
+| AC-01.5、FR-05 | TC-06 | `backend/tests/acceptance/test_leaves.py` | 通過 |
+| AC-02.1、FR-06 | TC-07 | `backend/tests/acceptance/test_leaves.py` | 通過 |
 | NFR-01 | TC-09 | 待人工操作 | 未執行 |
-| NFR-02 | TC-07 | 待檢查暫存資料庫接縫 | 未執行 |
+| NFR-02 | TC-07 | `backend/tests/acceptance/test_leaves.py` 使用 `tmp_path` 注入資料庫 | 通過 |
 
 ## C4/C5 選用：AI 評測
 
 基本主線不使用模型，不跑 LLM eval。挑戰票啟動後才依 `course/02-補充/fixtures/README.md` 另定 fixture、比較方式、門檻與注入案例。
-
