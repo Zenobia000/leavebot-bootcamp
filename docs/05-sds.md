@@ -44,7 +44,7 @@
 {"employee_id":1,"leave_type":"annual","start_date":"2026-10-20","end_date":"2026-10-20","period":"full","reason":""}
 ```
 
-成功回 201，包含伺服器產生的 `id`、`days: 1`、`status: "pending"` 及原始有效欄位。業務驗證錯誤回 422 與 `{"detail":"可讀訊息"}`，框架解析錯誤可能回結構化 `detail`；前端需提供通用錯誤回饋，假單筆數不變；`days`、`status` 等多餘欄位也拒絕。相同有效請求再次送出會新增另一筆，沒有冪等鍵。
+成功回 201，包含伺服器產生的 `id`、`days: 1`、`status: "pending"` 及原始有效欄位。業務驗證錯誤回 422 與 `{"detail":"可讀訊息"}`，框架解析錯誤可能回結構化 `detail`；前端需提供通用錯誤回饋，假單筆數不變；`days`、`status` 等多餘欄位也拒絕。員工看到的那一句，以 SRS 預期結果表為準。相同有效請求再次送出會新增另一筆，沒有冪等鍵。
 
 ### API-04｜`GET /api/leaves?employee_id=<id>`（FR-06）
 

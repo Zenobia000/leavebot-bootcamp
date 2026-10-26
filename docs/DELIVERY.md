@@ -2,7 +2,7 @@
 
 依 `course/01-上課/04-STACK.md` 安裝、啟動與測試。預設網址 `http://127.0.0.1:8000/`；測試資料庫獨立，不含應用程式內 LLM 或登入。下方紅→綠與套件清單是原始彩排紀錄，其中絕對路徑屬當時環境，執行指令以目前 STACK 為準。
 
-本次整理後在 Windows Python 3.12.9 的專案 `.venv` 執行 `.venv\Scripts\python.exe -m pytest -q`：**21 passed、1 warning**。新增 TC-10 的 100 字成功邊界；應用程式程式碼未改動。瀏覽器證據沿用同一份程式的先前 Chromium 彩排，見 `docs/evidence/browser-check.json`。
+卡 J 先新增「101 字必須拒絕」的測試。上限還是 200 時，這條是紅的，下面貼的就是那次紀錄。接著程式改成 100 字，前後端和畫面上的字數提示都改了。這份快照的上限是 100。收據寫的完整結果是 21 passed、1 warning。下面綠燈原文是 20 passed，那是還沒加上「100 字可以登記」之前的一次執行，和 21 不是同一次。瀏覽器證據沿用先前的 Chromium 彩排，見 `docs/evidence/browser-check.json`。
 ## 需求變更的實際紅燈
 ```text
 .............F......                                                     [100%]
@@ -32,7 +32,7 @@ FAILED backend/tests/acceptance/test_leaves.py::test_new_reason_limit_100 - A...
 1 failed, 19 passed, 1 warning in 0.53s
 
 ```
-## 變更後綠燈
+## 改成 100 字之後、補上成功邊界之前的綠燈
 ```text
 ....................                                                     [100%]
 ============================== warnings summary ===============================
