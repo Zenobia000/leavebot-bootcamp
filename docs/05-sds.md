@@ -17,20 +17,19 @@
 
 ## API
 
-| 編號 | 方法／路徑 | 輸入 | 成功結果 | 錯誤碼與結果 | 來源 FR |
-|---|---|---|---|---|---|
-| API-01 | `GET /api/health` | 無 | 200，`{"status":"ok"}` | 服務無法連線時由前端顯示連線失敗 | 骨架 |
-| API-02 | `GET /api/employees` | 無 | 200，`id/name` 清單 | 讀取失敗時不顯示虛構成功 | FR-06 |
-| API-03 | `POST /api/leaves` | JSON：`employee_id`、`leave_type`、`start_date`、`end_date`、`period`，選填 `reason` | 201，含 `id`、後端計算 `days` 與 `pending` 的假單 | 欄位、員工或規則錯誤回 422 且不新增資料；`days/status` 等多餘欄位也回 422 | FR-01 至 FR-05 |
-| API-04 | `GET /api/leaves?employee_id=<id>` | 員工 ID | 200，該員工假單清單 | 未知員工回 404 | FR-06 |
+**API-01｜`GET /api/health`。** 骨架連線檢查；無輸入，成功回 200 與 `{"status":"ok"}`。服務不可連線時，前端顯示連線失敗。
+
+**API-02｜`GET /api/employees`（FR-06）。** 無輸入，成功回 200 與員工 `id/name` 清單。讀取失敗時不得顯示虛構成功。
+
+**API-03｜`POST /api/leaves`（FR-01 至 FR-05）。** 接受 JSON：`employee_id`、`leave_type`、`start_date`、`end_date`、`period`，`reason` 選填。成功回 201 與新假單，包含 `id`、後端計算的 `days` 和 `pending`。欄位、員工或規則錯誤回 422 且不新增資料；`days/status` 等多餘欄位也回 422。最小請求範例與重複送出語意見下段。
+
+**API-04｜`GET /api/leaves?employee_id=<id>`（FR-06）。** 依員工 ID 回 200 與該員工清單；未知員工回 404。
 
 ## 畫面與模組
 
-| 畫面／模組 | 顯示或負責的行為 | 呼叫 API／介面 | 來源 |
-|---|---|---|---|
-| UI-01 同頁表單與我的假單 | 選員工、填表、送出、顯示錯誤或待審核；重新整理或切員工後重查列表；理由用 `textContent` | API-02、API-03、API-04 | US-01、US-02、NFR-01 |
-| `create_app(database_path=None)` | 初始化資料庫及路由；預設路徑從 `LEAVEBOT_DB` 取得，測試注入暫存路徑 | SQLite 接縫 | NFR-02 |
-| `rules.leave_days(start,end,period)` | 含起迄日計算週一至週五；合法單日半天為 0.5，非法組合丟出規則錯誤 | API-03 | FR-03 |
+- **UI-01｜同頁表單與我的假單（US-01、US-02、NFR-01）：**選員工、填表、送出、顯示錯誤或待審核；重新整理或切員工後重查列表。呼叫 API-02 至 API-04；理由用 `textContent`。
+- **`create_app(database_path=None)`（NFR-02）：**初始化資料庫與路由；預設從 `LEAVEBOT_DB` 取得路徑，測試注入暫存路徑。
+- **`rules.leave_days(start,end,period)`（FR-03）：**含起迄日計算週一至週五；合法單日半天為 0.5，非法組合拋出規則錯誤，由 API-03 處理。
 
 每次 SQLite 連線開啟 foreign keys；正常結束 commit，例外 rollback，最後關閉。資料庫意外失敗不應新增假單或向畫面回報成功。
 
