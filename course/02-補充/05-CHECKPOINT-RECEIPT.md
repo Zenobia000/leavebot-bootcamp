@@ -1,10 +1,9 @@
 # cp3-tests：講師參考快照
 
-課程版本2026.10-unified-1；教材基底 `d10995bb6b4e06519fea443d367912f517ce82b7`。建立時間 2026-10-25T08:30:23.965495+00:00。
-這是一組講師明確選定的決策與參考實作，不代表所有Agent都能在同樣時間產出。
+本快照沿用已整理的六份規格與兩張主線票。骨架已建立；第一個業務測試刻意保留紅燈，供課堂逐個行為完成 TDD。
 
 ## 可接續內容
-骨架綠、第一個業務測試預期紅；接卡H逐個綠燈
+骨架 health 應為綠燈，TC-01 因 `POST /api/leaves` 尚未實作而預期回 405。從 [卡 H](../01-上課/prompts/08-H.md) 的第二段接續，先確認紅燈原因再實作。
 
 ## 實際證據
 ```text
@@ -43,4 +42,4 @@ FAILED backend/tests/acceptance/test_leaves.py::test_submit_valid_leave_is_pendi
 1 failed, 1 passed, 1 warning in 0.32s
 ```
 
-測試在本機Python3.12的隔離venv執行；原始結果只證明所列案例，不代表已做所有平台／Agent的互動彩排。查閱課程CHECKPOINTS後再接續。
+以上為原始彩排證據。本次整理後以 Windows Python 3.12.9 的專案 `.venv` 重跑 `.venv\Scripts\python.exe -m pytest -q`：**1 passed、1 failed**；唯一失敗是 TC-01 的 `POST /api/leaves` 回 405，符合本快照預期紅燈。不代表 TC-02 至 TC-09 或瀏覽器流程已驗證。
