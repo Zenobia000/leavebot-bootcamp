@@ -1,6 +1,6 @@
 # LeaveBot — 第二天的空白學生專案
 
-> **目前分支：`cp3-tests`。** 骨架 health 測試應通過，第一個業務測試刻意維持紅燈。請讀 [快照說明](course/02-補充/05-CHECKPOINT-RECEIPT.md)，從卡 H 的表單 TDD 段接續；`main` 才是空白學生起點。
+> **目前分支：`cp4-working-feature`。** 表單主線與自動化測試已完成，瀏覽器操作驗收仍須核對。請讀 [快照說明](course/02-補充/05-CHECKPOINT-RECEIPT.md)，從卡 I、J 接續；`main` 才是空白學生起點。
 
 第一天在獨立資料夾體驗 Vibe Coding、比較結果並練習 PRD；第二天用這個 repo，學習如何用規格、通用 skills、測試與人工驗收穩定交付。
 

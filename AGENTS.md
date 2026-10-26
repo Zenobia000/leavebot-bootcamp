@@ -11,7 +11,7 @@ Claude Code 經 `CLAUDE.md` 載入本檔；Codex 直接讀本檔。通用 skills
 
 ## 範圍與決策
 
-`main` 是空白學生起點；本分支 `cp3-tests` 是講師快照，已有骨架、health 綠燈與第一個業務測試的預期紅燈。從卡 H 的表單 TDD 段接續；不能把這個紅燈宣稱為交付失敗或全部通過。
+`main` 是空白學生起點；本分支 `cp4-working-feature` 是講師快照，表單主線與自動化測試已完成。從卡 I、J 接續；瀏覽器操作結果未核對前不標為已驗收。
 全班基本路徑是「選員工 → 填表 → 後端驗證 → SQLite 存檔 → 我的假單顯示待審核」。主線兩張票：`issues/000-skeleton.md`、`issues/001-submit-leave.md`。
 
 `course/` 固定課程邊界；已確認的 `docs/` 定義邊界內的產品行為。兩者衝突或必要決策未定時，列出問題請人決定，不能改規格來配合程式。偏差記進 `docs/LESSONS.md`。
