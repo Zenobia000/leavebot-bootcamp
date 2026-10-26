@@ -6,7 +6,7 @@ from fastapi import Body, FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
 from .rules import leave_days
 
-REASON_MAX=500
+REASON_MAX=200
 @contextmanager
 def connect(path):
     c=sqlite3.connect(path);c.row_factory=sqlite3.Row;c.execute('PRAGMA foreign_keys=ON')
