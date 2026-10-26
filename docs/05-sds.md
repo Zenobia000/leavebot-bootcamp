@@ -2,6 +2,8 @@
 
 > 上游：`docs/04-sad.md`、`docs/03-srs.md`。欄位及介面供測試案例與兩張主線票引用。
 
+文件狀態：講師參考已確認；負責人／審查者：課程講師。
+
 ## 資料
 
 | 表／欄位 | 型別與允許值 | 預設／限制 | 來源 FR |
@@ -31,3 +33,15 @@
 | `rules.leave_days(start,end,period)` | 含起迄日計算週一至週五；合法單日半天為 0.5，非法組合丟出規則錯誤 | API-03 | FR-03 |
 
 每次 SQLite 連線開啟 foreign keys；正常結束 commit，例外 rollback，最後關閉。資料庫意外失敗不應新增假單或向畫面回報成功。
+
+## 契約細節與不變量
+
+`POST /api/leaves` 的最小請求範例：
+
+```json
+{"employee_id":1,"leave_type":"annual","start_date":"2026-10-20","end_date":"2026-10-20","period":"full","reason":""}
+```
+
+成功回應包含伺服器產生的 `id`、`days: 1`、`status: "pending"` 及原始有效欄位。業務驗證錯誤以 `{"detail":"可讀訊息"}` 回傳；框架自身的請求解析錯誤可能使用結構化 `detail`，前端須有通用錯誤回饋。`GET /api/employees` 回 `[{"id":1,"name":"..."}]`；`GET /api/leaves?employee_id=1` 回該員工的清單，沒有資料回空陣列。主線未規定清單排序，實作不得宣稱排序契約。
+
+未知或多餘的 POST 欄位，包括 `days`、`status`，以 422 拒絕；拒絕時假單筆數不變。相同有效請求再次送出會新增另一筆，沒有冪等鍵。SQLite 的假單欄位由後端寫入；課堂從空資料庫初始化，沒有既有資料遷移。正式上線的 API 相容性、備份和資料保留尚未設計。
