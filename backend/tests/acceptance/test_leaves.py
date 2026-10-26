@@ -50,6 +50,12 @@ def test_invalid_values_do_not_save(client,changes):
     assert count(client)==0
 
 @pytest.mark.req('TC-10','AC-01.4','FR-04')
+def test_reason_at_100_character_limit_is_accepted(client):
+    response=client.post('/api/leaves',json=valid(reason='字'*100))
+    assert response.status_code==201
+    assert response.json()['reason']=='字'*100
+
+@pytest.mark.req('TC-10','AC-01.4','FR-04')
 def test_new_reason_limit_100(client):
     assert client.post('/api/leaves',json=valid(reason='字'*101)).status_code==422
     assert count(client)==0

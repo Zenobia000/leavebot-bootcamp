@@ -8,7 +8,7 @@
 
 ## 自動化證據
 
-本次整理後在 Windows Python 3.12.9 的專案 `.venv` 執行 `.venv\Scripts\python.exe -m pytest -q`：**20 passed、1 warning**。TC-10 在舊上限時曾預期紅燈，改為 100 後轉綠；原始紅→綠輸出保存在 `docs/DELIVERY.md`，其中絕對路徑是彩排時的環境資訊。
+本次整理後在 Windows Python 3.12.9 的專案 `.venv` 執行 `.venv\Scripts\python.exe -m pytest -q`：**21 passed、1 warning**。TC-10 覆蓋 100 字成功與 101 字拒絕；後者在舊上限時曾預期紅燈，改為 100 後轉綠。原始紅→綠輸出保存在 `docs/DELIVERY.md`，其中絕對路徑是彩排時的環境資訊。
 
 ## 瀏覽器證據與界限
 

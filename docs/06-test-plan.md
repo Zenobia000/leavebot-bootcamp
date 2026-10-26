@@ -15,7 +15,7 @@
 | TC-07 | AC-02.1、FR-06、NFR-02 | acceptance | 員工 1 送出後查員工 2，重開 app 再查員工 1；測試使用暫存 DB | 員工 2 為空；員工 1 紀錄持久；開發 DB 不受測試影響 | 依隔離要求核定 |
 | TC-08 | AC-01.2、FR-02 | acceptance | 未知員工、非法假別／時段或無效日期 | 422；不存檔 | 依規格核定 |
 | TC-09 | NFR-01 | 人工操作 | 理由含 HTML 標記 | 畫面顯示文字，不解析成 HTML | 依安全呈現要求核定 |
-| TC-10 | AC-01.4、FR-04 | acceptance | 理由 101 個 Unicode 字元 | 422；不存檔 | 依變更後 100 字上限核定 |
+| TC-10 | AC-01.4、FR-04 | acceptance | 理由 100／101 個 Unicode 字元 | 100 字可登記；101 字回 422 且不存檔 | 依變更後 100 字上限核定 |
 
 ## 人工操作
 
@@ -23,7 +23,7 @@
 
 ## 退出條件
 
-- [x] 相關自動化測試實際執行且通過：20 passed（2026-10-27，Windows Python 3.12.9）
+- [x] 相關自動化測試實際執行且通過：21 passed（2026-10-27，Windows Python 3.12.9）
 - [x] 成功、拒絕、重新整理、換員工及 TC-09 純文字呈現有先前 Playwright Chromium 操作紀錄，見 `docs/evidence/browser-check.json`
 - [x] 每條 AC／FR／NFR 已安排 TC；尚未執行者不標通過
 
@@ -34,7 +34,7 @@
 | AC-01.1、FR-01 | TC-01 | `backend/tests/acceptance/test_leaves.py` | 通過 |
 | AC-01.2、FR-02 | TC-02、TC-03、TC-08 | `backend/tests/acceptance/test_leaves.py` | 通過 |
 | AC-01.3、FR-03 | TC-04 | `backend/tests/unit/test_rules.py` | 通過 |
-| AC-01.4、FR-04 | TC-05、TC-10 | `backend/tests/acceptance/test_leaves.py` | 通過；TC-10 曾因舊上限 200 預期紅燈 |
+| AC-01.4、FR-04 | TC-05、TC-10 | `backend/tests/acceptance/test_leaves.py`；TC-10 測 100 可用、101 拒絕 | 通過；TC-10 曾因舊上限 200 預期紅燈 |
 | AC-01.5、FR-05 | TC-06 | `backend/tests/acceptance/test_leaves.py` | 通過 |
 | AC-02.1、FR-06 | TC-07 | `backend/tests/acceptance/test_leaves.py` | 通過 |
 | NFR-01 | TC-09 | `docs/evidence/browser-check.json`、瀏覽器截圖 | 先前 Chromium 操作通過 |
