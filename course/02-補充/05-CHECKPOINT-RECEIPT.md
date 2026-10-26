@@ -17,4 +17,4 @@
 19 passed, 1 warning in 0.63s
 ```
 
-本次整理後以 Windows Python 3.12.9 的專案 `.venv` 重跑 `.venv\Scripts\python.exe -m pytest -q`：**19 passed、1 warning**。測試結果只證明自動化案例；TC-09 的瀏覽器純文字操作與其他平台的課堂耗時尚未驗證。
+本次整理後以 Windows Python 3.12.9 的專案 `.venv` 重跑 `.venv\Scripts\python.exe -m pytest -q`：**20 passed、1 warning**。新增 TC-05 的 200 字成功邊界，保留 201 字拒絕；測試結果只證明自動化案例。TC-09 的瀏覽器純文字操作與其他平台的課堂耗時尚未驗證。

@@ -10,7 +10,7 @@
 | TC-02 | AC-01.2、FR-02 | acceptance | 缺少假別 | 422；假單筆數不變 | 依規格核定 |
 | TC-03 | AC-01.2、FR-02 | acceptance | 結束日早於開始日 | 422；不存檔 | 依規格核定 |
 | TC-04 | AC-01.3、FR-03 | unit | 週五到週一整天、單日工作日上午／下午、跨日半天、全週末 | 前兩類分別為 2 天及 0.5 天；後兩類拒絕 | 依工作日規則核定 |
-| TC-05 | AC-01.4、FR-04 | acceptance | 理由 201 個 Unicode 字元 | 422；不存檔 | 依 200 字上限核定 |
+| TC-05 | AC-01.4、FR-04 | acceptance | 理由 200／201 個 Unicode 字元 | 200 字可登記；201 字回 422 且不存檔 | 依 200 字上限核定 |
 | TC-06 | AC-01.5、FR-05 | acceptance | 請求自行帶入 `approved` 或 `days=99` | 422；不存檔 | 依後端決定規則核定 |
 | TC-07 | AC-02.1、FR-06、NFR-02 | acceptance | 員工 1 送出後查員工 2，重開 app 再查員工 1；測試使用暫存 DB | 員工 2 為空；員工 1 紀錄持久；開發 DB 不受測試影響 | 依隔離要求核定 |
 | TC-08 | AC-01.2、FR-02 | acceptance | 未知員工、非法假別／時段或無效日期 | 422；不存檔 | 依規格核定 |
@@ -22,7 +22,7 @@
 
 ## 退出條件
 
-- [x] 相關自動化測試實際執行且通過：19 passed（2026-10-27，Windows Python 3.12.9）
+- [x] 相關自動化測試實際執行且通過：20 passed（2026-10-27，Windows Python 3.12.9）
 - [ ] 成功、拒絕、重新整理與換員工流程經人工或瀏覽器操作核對
 - [x] 每條 AC／FR／NFR 已安排 TC；尚未執行者不標通過
 
@@ -33,7 +33,7 @@
 | AC-01.1、FR-01 | TC-01 | `backend/tests/acceptance/test_leaves.py` | 通過 |
 | AC-01.2、FR-02 | TC-02、TC-03、TC-08 | `backend/tests/acceptance/test_leaves.py` | 通過 |
 | AC-01.3、FR-03 | TC-04 | `backend/tests/unit/test_rules.py` | 通過 |
-| AC-01.4、FR-04 | TC-05 | `backend/tests/acceptance/test_leaves.py` | 通過 |
+| AC-01.4、FR-04 | TC-05 | `backend/tests/acceptance/test_leaves.py` 測 200 可用、201 拒絕 | 通過 |
 | AC-01.5、FR-05 | TC-06 | `backend/tests/acceptance/test_leaves.py` | 通過 |
 | AC-02.1、FR-06 | TC-07 | `backend/tests/acceptance/test_leaves.py` | 通過 |
 | NFR-01 | TC-09 | 待人工操作 | 未執行 |

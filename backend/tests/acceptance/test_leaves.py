@@ -25,6 +25,12 @@ def test_reverse_date_rejected_without_save(client):
     assert client.post('/api/leaves',json=valid(end_date='2026-10-19')).status_code==422
     assert count(client)==0
 @pytest.mark.req('TC-05','AC-01.4','FR-04')
+def test_reason_at_200_character_limit_is_accepted(client):
+    response=client.post('/api/leaves',json=valid(reason='字'*200))
+    assert response.status_code==201
+    assert response.json()['reason']=='字'*200
+
+@pytest.mark.req('TC-05','AC-01.4','FR-04')
 def test_long_reason_rejected_without_save(client):
     assert client.post('/api/leaves',json=valid(reason='字'*201)).status_code==422
     assert count(client)==0
