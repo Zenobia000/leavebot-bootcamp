@@ -42,6 +42,6 @@
 {"employee_id":1,"leave_type":"annual","start_date":"2026-10-20","end_date":"2026-10-20","period":"full","reason":""}
 ```
 
-成功回應包含伺服器產生的 `id`、`days: 1`、`status: "pending"` 及原始有效欄位。錯誤回應使用 FastAPI 的 `detail`，前端可顯示人可讀訊息；具體欄位錯誤結構由框架產生，不要求前端解析內部細節。`GET /api/employees` 回 `[{"id":1,"name":"..."}]`；`GET /api/leaves?employee_id=1` 回該員工的清單，沒有資料回空陣列。主線未規定清單排序，實作不得宣稱排序契約。
+成功回應包含伺服器產生的 `id`、`days: 1`、`status: "pending"` 及原始有效欄位。業務驗證錯誤以 `{"detail":"可讀訊息"}` 回傳；框架自身的請求解析錯誤可能使用結構化 `detail`，前端須有通用錯誤回饋。`GET /api/employees` 回 `[{"id":1,"name":"..."}]`；`GET /api/leaves?employee_id=1` 回該員工的清單，沒有資料回空陣列。主線未規定清單排序，實作不得宣稱排序契約。
 
 未知或多餘的 POST 欄位，包括 `days`、`status`，以 422 拒絕；拒絕時假單筆數不變。相同有效請求再次送出會新增另一筆，沒有冪等鍵。SQLite 的假單欄位由後端寫入；課堂從空資料庫初始化，沒有既有資料遷移。正式上線的 API 相容性、備份和資料保留尚未設計。
