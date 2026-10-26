@@ -1,48 +1,15 @@
-# cp5-delivered：講師參考快照
+# cp5-delivered：講師交付參考快照
 
-課程版本2026.10-unified-1；教材基底 `d10995bb6b4e06519fea443d367912f517ce82b7`。建立時間 2026-10-25T08:30:27.650133+00:00。
-這是一組講師明確選定的決策與參考實作，不代表所有Agent都能在同樣時間產出。
+本快照承接 cp4 的表單主線，卡 J 將理由上限由 200 改為 100；Brief、PRD AC-01.4、SRS FR-04、SDS、TC-10、前後端與 UI 已對齊。歷史變更見 `issues/002-reason-limit.md`。
 
 ## 可接續內容
-需求變更紅→綠與交付參考；瀏覽器核心流程已驗證
 
-## 實際證據
-```text
-.............F......                                                     [100%]
-================================== FAILURES ===================================
-__________________________ test_new_reason_limit_100 __________________________
+從 [卡 K](../01-上課/prompts/11-K.md) 做交付審查，或於課後對照六份文件、三張票與測試。這是講師參考解法，不要求學員逐字產出相同內容。
 
-client = <starlette.testclient.TestClient object at 0x0000027E45BB36E0>
+## 自動化證據
 
-    @pytest.mark.req('TC-10','AC-01.4','FR-04')
-    def test_new_reason_limit_100(client):
->       assert client.post('/api/leaves',json=valid(reason='�r'*101)).status_code==422
-E       AssertionError: assert 201 == 422
-E        +  where 201 = <Response [201 Created]>.status_code
-E        +    where <Response [201 Created]> = post('/api/leaves', json={'employee_id': 1, 'leave_type': 'annual', 'start_date': '2026-10-20', 'end_date': '2026-10-20', ...})
-E        +      where post = <starlette.testclient.TestClient object at 0x0000027E45BB36E0>.post
-E        +      and   {'employee_id': 1, 'leave_type': 'annual', 'start_date': '2026-10-20', 'end_date': '2026-10-20', ...} = valid(reason=('�r' * 101))
+本次整理後在 Windows Python 3.12.9 的專案 `.venv` 執行 `.venv\Scripts\python.exe -m pytest -q`：**20 passed、1 warning**。TC-10 在舊上限時曾預期紅燈，改為 100 後轉綠；原始紅→綠輸出保存在 `docs/DELIVERY.md`，其中絕對路徑是彩排時的環境資訊。
 
-backend\tests\acceptance\test_leaves.py:54: AssertionError
-============================== warnings summary ===============================
-.venv\Lib\site-packages\fastapi\testclient.py:1
-  D:\python_workspace\github\ai-vibe-coding-beginner\tmp\leavebot-rehearsal\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
-    from starlette.testclient import TestClient as TestClient  # noqa
+## 瀏覽器證據與界限
 
--- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
-=========================== short test summary info ===========================
-FAILED backend/tests/acceptance/test_leaves.py::test_new_reason_limit_100 - A...
-1 failed, 19 passed, 1 warning in 0.53s
-
-GREEN:
-....................                                                     [100%]
-============================== warnings summary ===============================
-.venv\Lib\site-packages\fastapi\testclient.py:1
-  D:\python_workspace\github\ai-vibe-coding-beginner\tmp\leavebot-rehearsal\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
-    from starlette.testclient import TestClient as TestClient  # noqa
-
--- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
-20 passed, 1 warning in 0.46s
-```
-
-測試在本機Python3.12的隔離venv執行；另已在Chromium實際操作成功、拒絕、重新整理、員工切換與TC09純文字呈現，證據在docs/evidence/。原始結果只證明所列案例，不代表已做所有平台／Agent的互動彩排。查閱課程CHECKPOINTS後再接續。
+先前對同一份未改動的程式以 Playwright Chromium 操作成功送出、反向日期拒絕不存檔、重新整理、切換員工、TC-09 理由純文字呈現、100 字 UI 與 390px 排版。紀錄在 [browser-check.json](../../docs/evidence/browser-check.json) 與兩張截圖。未驗證其他作業系統、其他 Agent 的完整課堂耗時或真人操作。

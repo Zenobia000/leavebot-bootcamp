@@ -1,5 +1,8 @@
 # 交付參考
-依course/STACK.md安裝、啟動與測試。預設http://127.0.0.1:8000/；測試資料庫獨立，不含app內LLM或登入。
+
+依 `course/01-上課/04-STACK.md` 安裝、啟動與測試。預設網址 `http://127.0.0.1:8000/`；測試資料庫獨立，不含應用程式內 LLM 或登入。下方紅→綠與套件清單是原始彩排紀錄，其中絕對路徑屬當時環境，執行指令以目前 STACK 為準。
+
+本次整理後在 Windows Python 3.12.9 的專案 `.venv` 執行 `.venv\Scripts\python.exe -m pytest -q`：**20 passed、1 warning**。瀏覽器證據沿用同一份未改動程式的先前 Chromium 彩排，見 `docs/evidence/browser-check.json`。
 ## 需求變更的實際紅燈
 ```text
 .............F......                                                     [100%]
