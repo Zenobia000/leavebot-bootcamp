@@ -1,10 +1,11 @@
-# cp1-requirements：講師參考快照
+# cp2-design：講師參考快照
 
-本快照的公司情境與理由、過去日期、重複送出決策均為教學假設。`docs/01-brief.md`、`docs/02-prd.md`、`docs/03-srs.md` 已依上課模板整理；需求編號供後續設計與測試沿用。
+本快照沿用 `cp1` 的講師教學決策，完成 `docs/01`–`06`、流程圖與兩張主線票。設計和案例依上課模板整理；尚未建立應用程式。
 
 ## 可接續內容
-Brief、PRD 與 SRS 已完成；先對照本組決策，再從 [卡 D](../01-上課/prompts/04-D.md)、[卡 E](../01-上課/prompts/05-E.md) 接續。
+
+先核對本組決策，再從 [卡 H](../01-上課/prompts/08-H.md) 的骨架段實作 000；骨架驗收後才進入 001。
 
 ## 驗證範圍
 
-此階段沒有應用程式或測試。文件對照 `course/01-上課/templates/01-brief.md` 至 `03-srs.md` 的段落、編號與來源；尚未宣稱功能或跨平台驗證。
+[流程圖](../../diagrams/submit-leave.html) 的 Archify finalize 與 browser-check 證據在 `diagrams/submit-leave.finalize.json`、`diagrams/submit-leave.browser-check.json`。`docs/06-test-plan.md` 的 TC-01 至 TC-09 只是計畫，尚未執行；本快照不宣稱 pytest 或應用程式驗收通過。

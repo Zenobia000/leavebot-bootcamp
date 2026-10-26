@@ -11,7 +11,7 @@ Claude Code 經 `CLAUDE.md` 載入本檔；Codex 直接讀本檔。通用 skills
 
 ## 範圍與決策
 
-本分支是一個空白學生起點：沒有 app、`docs/` 或 `issues/`。第二天先規格，再讓 Agent 生成骨架與功能。
+`main` 是空白學生起點；本分支 `cp2-design` 是講師快照，已有 `docs/01`–`06`、流程圖與兩張主線票，尚無 app。從卡 H 的骨架段接續。
 全班基本路徑是「選員工 → 填表 → 後端驗證 → SQLite 存檔 → 我的假單顯示待審核」。主線兩張票：`issues/000-skeleton.md`、`issues/001-submit-leave.md`。
 
 `course/` 固定課程邊界；已確認的 `docs/` 定義邊界內的產品行為。兩者衝突或必要決策未定時，列出問題請人決定，不能改規格來配合程式。偏差記進 `docs/LESSONS.md`。
