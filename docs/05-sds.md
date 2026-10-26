@@ -21,7 +21,7 @@
 | `leaves.id`, `employee_id` | 整數主鍵、外鍵 | `employee_id` 必須存在；開啟 SQLite foreign keys | FR-01、FR-02、FR-06 |
 | `leaves.leave_type`, `period` | 文字；`annual/personal/sick`、`full/am/pm` | 不接受其他值 | FR-02、FR-03 |
 | `leaves.start_date`, `end_date` | `YYYY-MM-DD` 日期文字 | 結束日不得早於開始日 | FR-02、FR-03 |
-| `leaves.reason` | 文字 | 選填，預設空字串；最多 200 個 Unicode 字元 | FR-04 |
+| `leaves.reason` | 文字 | 選填，預設空字串；最多 500 個 Unicode 字元 | FR-04 |
 | `leaves.days`, `status` | 數值、文字 | 由後端計算天數；新假單固定 `pending`，不接受客戶端指定 | FR-01、FR-03、FR-05 |
 
 每次 SQLite 連線開啟 foreign keys；正常結束 commit，例外 rollback，最後關閉。拒絕的輸入不得新增假單；資料庫失敗時不得向畫面回報成功。

@@ -53,7 +53,7 @@ API 案例同時檢查回應與資料副作用；詳細預期結果列在案例�
 - TC-02（AC-01.2、FR-02；API）：缺少假別。預期 422，假單筆數不變。
 - TC-03（AC-01.2、FR-02；API）：結束日早於開始日。預期 422，不存檔。
 - TC-04（AC-01.3、FR-03；單元）：週五到週一整天為 2 天；單日工作日上午／下午各為 0.5。跨日半天與全週末申請應拒絕。
-- TC-05（AC-01.4、FR-04；API）：理由為 200／201 個 Unicode 字元。依 200 字上限，前者可登記，後者回 422 且不存檔。
+- TC-05（AC-01.4、FR-04；API）：理由為 500／501 個 Unicode 字元。依 500 字上限，前者可登記，後者回 422 且不存檔。
 - TC-06（AC-01.5、FR-05；API）：請求自行帶入 `approved` 或 `days=99`。預期 422，不存檔。
 - TC-08（AC-01.2、FR-02；API）：未知員工、非法假別／時段或無效日期。各情境預期 422，不存檔。
 
@@ -82,7 +82,7 @@ API 案例同時檢查回應與資料副作用；詳細預期結果列在案例�
 | AC-01.1、FR-01 | TC-01 | `backend/tests/acceptance/test_leaves.py` | 通過 |
 | AC-01.2、FR-02 | TC-02、TC-03、TC-08 | `backend/tests/acceptance/test_leaves.py` | 通過 |
 | AC-01.3、FR-03 | TC-04 | `backend/tests/unit/test_rules.py` | 通過 |
-| AC-01.4、FR-04 | TC-05 | `backend/tests/acceptance/test_leaves.py` 測 200 可用、201 拒絕 | 通過 |
+| AC-01.4、FR-04 | TC-05 | `backend/tests/acceptance/test_leaves.py` 測 500 可用、501 拒絕 | 通過 |
 | AC-01.5、FR-05 | TC-06 | `backend/tests/acceptance/test_leaves.py` | 通過 |
 | AC-02.1、FR-06 | TC-07 | `backend/tests/acceptance/test_leaves.py` | 通過 |
 | NFR-01 | TC-09 | 待人工操作 | 未執行 |
